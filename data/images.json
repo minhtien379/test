@@ -4,6 +4,11 @@
       "id": 1,
       "filename": "image_1.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_1.jpg"
+    },
+    {
+      "id": 2,
+      "filename": "image_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_2.jpg"
     }
   ]
 }
