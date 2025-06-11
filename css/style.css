@@ -104,8 +104,8 @@ h1, h2, h3 {
 
 .preview-item {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 137px;
+    height: 137px;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
@@ -143,8 +143,8 @@ h1, h2, h3 {
 
 .gallery-item {
     position: relative;
-    width: 137px;
-    height: 137px;
+    width: 150px;
+    height: 150px;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
