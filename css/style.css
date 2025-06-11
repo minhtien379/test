@@ -143,8 +143,8 @@ h1, h2, h3 {
 
 .gallery-item {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 137px;
+    height: 137px;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
@@ -391,8 +391,8 @@ h1, h2, h3 {
 
 .duplicate-image {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 117px;
+    height: 117px;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
@@ -486,11 +486,16 @@ h1, h2, h3 {
 }
 
 @media (max-width: 480px) {
-    .preview-item, .gallery-item {
+    .preview-item{
         width: 80px;
         height: 80px;
     }
     
+    .gallery-item {
+        width: 85px;
+        height: 85px;
+    }
+
     .duplicate-image {
         width: 80px;
         height: 80px;
