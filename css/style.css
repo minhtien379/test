@@ -358,7 +358,6 @@ h1, h2, h3 {
 
 .total-images-info i {
     margin-right: 5px;
-    color: #2ea44f;
 }
 
 /* Duplicates Section Styles */
@@ -486,20 +485,16 @@ h1, h2, h3 {
 }
 
 @media (max-width: 480px) {
-    .preview-item{
+    .preview-item, .duplicate-image{
         width: 83px;
         height: 83px;
     }
     
     .gallery-item {
-        width: 88px;
-        height: 88px;
+        width: 95px;
+        height: 95px;
     }
 
-    .duplicate-image {
-        width: 83px;
-        height: 83px;
-    }
     
     .tab-btn {
         padding: 8px 12px;
