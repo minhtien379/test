@@ -94,6 +94,45 @@ h1, h2, h3 {
     background-color: #e9ecef;
 }
 
+/* Category Section Styles */
+.category-section {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.category-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.category-tag .remove-tag {
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 12px;
+}
+
 /* Preview Styles */
 #preview {
     display: flex;
@@ -176,6 +215,21 @@ h1, h2, h3 {
 
 .gallery-item:hover .delete-btn {
     opacity: 1;
+}
+
+.image-categories {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Button Styles */
