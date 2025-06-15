@@ -685,10 +685,11 @@ uploadBtn.addEventListener('click', async () => {
                 const fileExtension = file.name.split('.').pop().toLowerCase() || 'jpg';
                 const imageId = availableIds.length > 0 ? availableIds.shift() : nextId++;
                 
-                let filename = `image_${imageId}`;
+                // Đổi từ image_{id} thành Ảnh {id}
+                let filename = `Ảnh ${imageId}`;
                 let counter = 1;
                 while (existingFilenames.includes(filename)) {
-                    filename = `image_${imageId}_${counter}`;
+                    filename = `Ảnh ${imageId}_${counter}`;
                     counter++;
                 }
                 
@@ -826,7 +827,13 @@ async function getCurrentImages(username, repo, token) {
             }));
         }
         
-        return content.images || [];
+        // Nếu là object có trường images thì trả về mảng images
+        if (content.images && Array.isArray(content.images)) {
+            return content.images;
+        }
+        
+        // Trường hợp không có gì thì trả về mảng rỗng
+        return [];
     } catch (error) {
         if (error.message.includes('404')) return [];
         console.error('Error getting current images:', error);
@@ -853,8 +860,8 @@ async function updateImagesJson(username, repo, token, images) {
         }
         
         const sortedImages = [...images].sort((a, b) => a.id - b.id);
-        const newContent = {
-            images: sortedImages 
+        const newContent = { 
+            images: sortedImages  // Chỉ giữ lại mảng images, không có version và last_updated
         };
         
         const putResponse = await fetch(
