@@ -22,8 +22,6 @@ const findDuplicatesBtn = document.getElementById('findDuplicatesBtn');
 const duplicatesContainer = document.getElementById('duplicates-container');
 const duplicatesCount = document.getElementById('duplicatesCount');
 const deleteAllDuplicatesBtn = document.getElementById('deleteAllDuplicatesBtn');
-const addCategoryBtn = document.getElementById('addCategoryBtn');
-const imageCategory = document.getElementById('imageCategory');
 
 // Tab Elements
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -35,7 +33,6 @@ const imagesPerPage = 50;
 let totalImages = 0;
 let allImages = [];
 let duplicateGroupsData = [];
-let selectedCategories = ['general'];
 let currentImageToDelete = null;
 
 // Tab Switching
@@ -61,51 +58,6 @@ tabBtns.forEach(btn => {
         }
     });
 });
-
-// Category management
-addCategoryBtn.addEventListener('click', () => {
-    const category = imageCategory.value;
-    
-    if (!selectedCategories.includes(category)) {
-        selectedCategories.push(category);
-        updateCategoryTags();
-    }
-});
-
-function updateCategoryTags() {
-    const tagsContainer = document.createElement('div');
-    tagsContainer.className = 'category-tags';
-    
-    selectedCategories.forEach((category, index) => {
-        const tag = document.createElement('span');
-        tag.className = 'category-tag';
-        tag.innerHTML = `
-            ${category}
-            <span class="remove-tag" data-index="${index}">×</span>
-        `;
-        tagsContainer.appendChild(tag);
-    });
-    
-    let existingTags = document.querySelector('.category-tags');
-    if (existingTags) {
-        existingTags.replaceWith(tagsContainer);
-    } else {
-        const categorySection = document.querySelector('.category-section');
-        categorySection.appendChild(tagsContainer);
-    }
-    
-    // Add event listeners to remove buttons
-    document.querySelectorAll('.remove-tag').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-index'));
-            selectedCategories.splice(index, 1);
-            updateCategoryTags();
-        });
-    });
-}
-
-// Initialize with default category
-updateCategoryTags();
 
 // Drag and drop handlers
 dropArea.addEventListener('dragover', (e) => {
@@ -270,9 +222,10 @@ function displayDuplicateGroups(groups) {
         
         group.forEach((image, idx) => {
             html += `<div class="duplicate-image">
-                        <img src="${image.path}" alt="${image.filename}">
+                        <img src="${image.path}" alt="${image.displayName || `Ảnh ${image.id}`}">
                         <button class="delete-btn" onclick="showDeleteModal(${JSON.stringify(image).replace(/"/g, '&quot;')})">×</button>
                         <div class="duplicate-info">${idx === 0 ? '(Giữ lại)' : ''}</div>
+                        <div class="duplicate-name">${image.displayName || `Ảnh ${image.id}`}</div>
                     </div>`;
         });
         
@@ -500,7 +453,11 @@ function displayCurrentPageImages() {
         
         const img = document.createElement('img');
         img.src = image.path;
-        img.alt = image.filename;
+        img.alt = image.displayName || `Ảnh ${image.id}`;
+        
+        const imageInfo = document.createElement('div');
+        imageInfo.className = 'image-info';
+        imageInfo.textContent = image.displayName || `Ảnh ${image.id}`;
         
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-btn';
@@ -511,16 +468,8 @@ function displayCurrentPageImages() {
         };
         
         galleryItem.appendChild(img);
+        galleryItem.appendChild(imageInfo);
         galleryItem.appendChild(deleteBtn);
-        
-        // Add categories display
-        if (image.categories && image.categories.length > 0) {
-            const categoriesDiv = document.createElement('div');
-            categoriesDiv.className = 'image-categories';
-            categoriesDiv.textContent = image.categories.join(', ');
-            galleryItem.appendChild(categoriesDiv);
-        }
-        
         galleryContainer.appendChild(galleryItem);
     });
 }
@@ -617,10 +566,7 @@ confirmDeleteBtn.addEventListener('click', async () => {
 // Delete image from GitHub
 async function deleteImageFromGitHub(username, repo, token, image) {
     try {
-        const fileExtension = image.path.split('.').pop().toLowerCase();
-        // Sử dụng originalFilename nếu có, nếu không thì dùng filename (tương thích ngược)
-        const originalName = image.originalFilename || image.filename.replace(/Ảnh /g, 'image_');
-        const imagePath = `images/${originalName}.${fileExtension}`;
+        const imagePath = `images/${image.filename}`;
         await deleteGitHubFile(username, repo, token, imagePath, `Xóa ảnh ${image.filename}`);
         
         let currentImages = await getCurrentImages(username, repo, token);
@@ -661,7 +607,7 @@ uploadBtn.addEventListener('click', async () => {
         let successCount = 0;
         const results = [];
         const currentImages = await getCurrentImages(githubUsername, repoName, githubToken);
-        const existingFilenames = currentImages.map(img => img.originalFilename || img.filename.replace(/Ảnh /g, 'image_'));
+        const existingFilenames = currentImages.map(img => img.filename);
         
         const usedIds = currentImages.map(img => img.id).sort((a, b) => a - b);
         let availableIds = [];
@@ -680,48 +626,38 @@ uploadBtn.addEventListener('click', async () => {
             if (!file.type.match('image.*')) continue;
             
             progressBar.style.width = `${Math.round(((i + 1) / files.length) * 100)}%`;
-            progressBar.textContent = `${Math.round(((i + 1) / files.length) * 100)}%`;
+            progressBar.textContent = `${Math.round(((i + 1) / files.length) * 100}%`;
             
             try {
                 const base64Content = await readFileAsBase64(file);
                 const fileExtension = file.name.split('.').pop().toLowerCase() || 'jpg';
                 const imageId = availableIds.length > 0 ? availableIds.shift() : nextId++;
                 
-                // Giữ nguyên tên file khi upload (image_{id})
-                let uploadFilename = `image_${imageId}`;
+                let filename = `image_${imageId}.${fileExtension}`;
                 let counter = 1;
-                while (existingFilenames.includes(uploadFilename)) {
-                    uploadFilename = `image_${imageId}_${counter}`;
+                while (existingFilenames.includes(filename)) {
+                    filename = `image_${imageId}_${counter}.${fileExtension}`;
                     counter++;
                 }
                 
-                // Nhưng dùng tên "Ảnh {id}" trong JSON
-                let displayFilename = `Ảnh ${imageId}`;
-                if (counter > 1) {
-                    displayFilename = `Ảnh ${imageId}_${counter-1}`;
-                }
-                
-                existingFilenames.push(uploadFilename);
-                
-                const fullPath = `images/${uploadFilename}.${fileExtension}`;
+                existingFilenames.push(filename);
                 
                 const uploadResponse = await uploadToGitHub(
                     githubUsername,
                     repoName,
                     githubToken,
-                    fullPath,
+                    `images/${filename}`,
                     base64Content,
-                    `Upload image ${uploadFilename}`
+                    `Upload image ${filename}`
                 );
                 
                 if (uploadResponse.content) {
                     successCount++;
                     const newImage = {
                         id: imageId,
-                        filename: displayFilename, // Dùng tên hiển thị trong JSON
-                        path: uploadResponse.content.download_url,
-                        categories: [...selectedCategories],
-                        originalFilename: uploadFilename // Lưu tên file gốc
+                        filename: filename,
+                        displayName: `Ảnh ${imageId}`,
+                        path: uploadResponse.content.download_url
                     };
                     currentImages.push(newImage);
                     results.push(newImage);
@@ -826,33 +762,13 @@ async function getCurrentImages(username, repo, token) {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const data = await response.json();
-        const content = JSON.parse(atob(data.content.replace(/\s/g, '')));
+        const imagesData = JSON.parse(atob(data.content.replace(/\s/g, ''))).images || [];
         
-        // Xử lý dữ liệu cũ
-        if (Array.isArray(content)) {
-            return content.map(img => ({
-                ...img,
-                filename: img.filename.replace(/^image_/, 'Ảnh '), // Chuyển đổi tên hiển thị
-                categories: img.categories || ['general'],
-                originalFilename: img.filename // Lưu lại tên gốc
-            }));
-        }
-        
-        // Xử lý dữ liệu mới
-        if (content.images && Array.isArray(content.images)) {
-            return content.images.map(img => {
-                // Nếu không có originalFilename thì tạo từ filename (tương thích ngược)
-                if (!img.originalFilename) {
-                    return {
-                        ...img,
-                        originalFilename: img.filename.replace(/^Ảnh /, 'image_')
-                    };
-                }
-                return img;
-            });
-        }
-        
-        return [];
+        // Ensure all images have displayName
+        return imagesData.map(img => ({
+            ...img,
+            displayName: img.displayName || `Ảnh ${img.id}`
+        }));
     } catch (error) {
         if (error.message.includes('404')) return [];
         console.error('Error getting current images:', error);
@@ -878,10 +794,14 @@ async function updateImagesJson(username, repo, token, images) {
             console.log('File images.json chưa tồn tại, sẽ tạo mới');
         }
         
-        const sortedImages = [...images].sort((a, b) => a.id - b.id);
-        const newContent = { 
-            images: sortedImages // Chỉ giữ lại mảng images
-        };
+        const sortedImages = [...images].map(img => ({
+            id: img.id,
+            filename: img.filename,
+            displayName: img.displayName || `Ảnh ${img.id}`,
+            path: img.path
+        })).sort((a, b) => a.id - b.id);
+        
+        const newContent = { images: sortedImages };
         
         const putResponse = await fetch(
             `https://api.github.com/repos/${username}/${repo}/contents/data/images.json`,
@@ -960,7 +880,7 @@ function showUploadResults(results, successCount, totalCount) {
     
     results.forEach(result => {
         if (result.path) {
-            html += `<p><strong>${result.filename}</strong> - <a href="${result.path}" target="_blank">Xem ảnh</a></p>`;
+            html += `<p><strong>${result.displayName || `Ảnh ${result.id}`}</strong> - <a href="${result.path}" target="_blank">Xem ảnh</a></p>`;
         } else {
             html += `<p><strong>${result.filename}</strong> - <span style="color: red;">Lỗi: ${result.error}</span></p>`;
         }
