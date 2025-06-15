@@ -618,7 +618,9 @@ confirmDeleteBtn.addEventListener('click', async () => {
 async function deleteImageFromGitHub(username, repo, token, image) {
     try {
         const fileExtension = image.path.split('.').pop().toLowerCase();
-        const imagePath = `images/${image.filename}.${fileExtension}`;
+        // Sử dụng originalFilename nếu có, nếu không thì dùng filename (tương thích ngược)
+        const originalName = image.originalFilename || image.filename.replace(/Ảnh /g, 'image_');
+        const imagePath = `images/${originalName}.${fileExtension}`;
         await deleteGitHubFile(username, repo, token, imagePath, `Xóa ảnh ${image.filename}`);
         
         let currentImages = await getCurrentImages(username, repo, token);
@@ -659,7 +661,7 @@ uploadBtn.addEventListener('click', async () => {
         let successCount = 0;
         const results = [];
         const currentImages = await getCurrentImages(githubUsername, repoName, githubToken);
-        const existingFilenames = currentImages.map(img => img.filename);
+        const existingFilenames = currentImages.map(img => img.originalFilename || img.filename.replace(/Ảnh /g, 'image_'));
         
         const usedIds = currentImages.map(img => img.id).sort((a, b) => a - b);
         let availableIds = [];
@@ -685,17 +687,23 @@ uploadBtn.addEventListener('click', async () => {
                 const fileExtension = file.name.split('.').pop().toLowerCase() || 'jpg';
                 const imageId = availableIds.length > 0 ? availableIds.shift() : nextId++;
                 
-                // Đổi từ image_{id} thành Ảnh {id}
-                let filename = `Ảnh ${imageId}`;
+                // Giữ nguyên tên file khi upload (image_{id})
+                let uploadFilename = `image_${imageId}`;
                 let counter = 1;
-                while (existingFilenames.includes(filename)) {
-                    filename = `Ảnh ${imageId}_${counter}`;
+                while (existingFilenames.includes(uploadFilename)) {
+                    uploadFilename = `image_${imageId}_${counter}`;
                     counter++;
                 }
                 
-                existingFilenames.push(filename);
+                // Nhưng dùng tên "Ảnh {id}" trong JSON
+                let displayFilename = `Ảnh ${imageId}`;
+                if (counter > 1) {
+                    displayFilename = `Ảnh ${imageId}_${counter-1}`;
+                }
                 
-                const fullPath = `images/${filename}.${fileExtension}`;
+                existingFilenames.push(uploadFilename);
+                
+                const fullPath = `images/${uploadFilename}.${fileExtension}`;
                 
                 const uploadResponse = await uploadToGitHub(
                     githubUsername,
@@ -703,16 +711,17 @@ uploadBtn.addEventListener('click', async () => {
                     githubToken,
                     fullPath,
                     base64Content,
-                    `Upload image ${filename}`
+                    `Upload image ${uploadFilename}`
                 );
                 
                 if (uploadResponse.content) {
                     successCount++;
                     const newImage = {
                         id: imageId,
-                        filename: filename,
+                        filename: displayFilename, // Dùng tên hiển thị trong JSON
                         path: uploadResponse.content.download_url,
-                        categories: [...selectedCategories]
+                        categories: [...selectedCategories],
+                        originalFilename: uploadFilename // Lưu tên file gốc
                     };
                     currentImages.push(newImage);
                     results.push(newImage);
@@ -819,20 +828,30 @@ async function getCurrentImages(username, repo, token) {
         const data = await response.json();
         const content = JSON.parse(atob(data.content.replace(/\s/g, '')));
         
-        // Kiểm tra cấu trúc dữ liệu cũ (không có categories)
+        // Xử lý dữ liệu cũ
         if (Array.isArray(content)) {
             return content.map(img => ({
                 ...img,
-                categories: ['general'] // Thêm categories mặc định cho dữ liệu cũ
+                filename: img.filename.replace(/^image_/, 'Ảnh '), // Chuyển đổi tên hiển thị
+                categories: img.categories || ['general'],
+                originalFilename: img.filename // Lưu lại tên gốc
             }));
         }
         
-        // Nếu là object có trường images thì trả về mảng images
+        // Xử lý dữ liệu mới
         if (content.images && Array.isArray(content.images)) {
-            return content.images;
+            return content.images.map(img => {
+                // Nếu không có originalFilename thì tạo từ filename (tương thích ngược)
+                if (!img.originalFilename) {
+                    return {
+                        ...img,
+                        originalFilename: img.filename.replace(/^Ảnh /, 'image_')
+                    };
+                }
+                return img;
+            });
         }
         
-        // Trường hợp không có gì thì trả về mảng rỗng
         return [];
     } catch (error) {
         if (error.message.includes('404')) return [];
@@ -861,7 +880,7 @@ async function updateImagesJson(username, repo, token, images) {
         
         const sortedImages = [...images].sort((a, b) => a.id - b.id);
         const newContent = { 
-            images: sortedImages  // Chỉ giữ lại mảng images, không có version và last_updated
+            images: sortedImages // Chỉ giữ lại mảng images
         };
         
         const putResponse = await fetch(
