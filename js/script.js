@@ -22,6 +22,8 @@ const findDuplicatesBtn = document.getElementById('findDuplicatesBtn');
 const duplicatesContainer = document.getElementById('duplicates-container');
 const duplicatesCount = document.getElementById('duplicatesCount');
 const deleteAllDuplicatesBtn = document.getElementById('deleteAllDuplicatesBtn');
+const addCategoryBtn = document.getElementById('addCategoryBtn');
+const imageCategory = document.getElementById('imageCategory');
 
 // Tab Elements
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -33,6 +35,8 @@ const imagesPerPage = 50;
 let totalImages = 0;
 let allImages = [];
 let duplicateGroupsData = [];
+let selectedCategories = ['general'];
+let currentImageToDelete = null;
 
 // Tab Switching
 tabBtns.forEach(btn => {
@@ -57,6 +61,51 @@ tabBtns.forEach(btn => {
         }
     });
 });
+
+// Category management
+addCategoryBtn.addEventListener('click', () => {
+    const category = imageCategory.value;
+    
+    if (!selectedCategories.includes(category)) {
+        selectedCategories.push(category);
+        updateCategoryTags();
+    }
+});
+
+function updateCategoryTags() {
+    const tagsContainer = document.createElement('div');
+    tagsContainer.className = 'category-tags';
+    
+    selectedCategories.forEach((category, index) => {
+        const tag = document.createElement('span');
+        tag.className = 'category-tag';
+        tag.innerHTML = `
+            ${category}
+            <span class="remove-tag" data-index="${index}">×</span>
+        `;
+        tagsContainer.appendChild(tag);
+    });
+    
+    let existingTags = document.querySelector('.category-tags');
+    if (existingTags) {
+        existingTags.replaceWith(tagsContainer);
+    } else {
+        const categorySection = document.querySelector('.category-section');
+        categorySection.appendChild(tagsContainer);
+    }
+    
+    // Add event listeners to remove buttons
+    document.querySelectorAll('.remove-tag').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = parseInt(e.target.getAttribute('data-index'));
+            selectedCategories.splice(index, 1);
+            updateCategoryTags();
+        });
+    });
+}
+
+// Initialize with default category
+updateCategoryTags();
 
 // Drag and drop handlers
 dropArea.addEventListener('dragover', (e) => {
@@ -463,6 +512,15 @@ function displayCurrentPageImages() {
         
         galleryItem.appendChild(img);
         galleryItem.appendChild(deleteBtn);
+        
+        // Add categories display
+        if (image.categories && image.categories.length > 0) {
+            const categoriesDiv = document.createElement('div');
+            categoriesDiv.className = 'image-categories';
+            categoriesDiv.textContent = image.categories.join(', ');
+            galleryItem.appendChild(categoriesDiv);
+        }
+        
         galleryContainer.appendChild(galleryItem);
     });
 }
@@ -559,7 +617,8 @@ confirmDeleteBtn.addEventListener('click', async () => {
 // Delete image from GitHub
 async function deleteImageFromGitHub(username, repo, token, image) {
     try {
-        const imagePath = `images/${image.filename}`;
+        const fileExtension = image.path.split('.').pop().toLowerCase();
+        const imagePath = `images/${image.filename}.${fileExtension}`;
         await deleteGitHubFile(username, repo, token, imagePath, `Xóa ảnh ${image.filename}`);
         
         let currentImages = await getCurrentImages(username, repo, token);
@@ -626,20 +685,22 @@ uploadBtn.addEventListener('click', async () => {
                 const fileExtension = file.name.split('.').pop().toLowerCase() || 'jpg';
                 const imageId = availableIds.length > 0 ? availableIds.shift() : nextId++;
                 
-                let filename = `image_${imageId}.${fileExtension}`;
+                let filename = `image_${imageId}`;
                 let counter = 1;
                 while (existingFilenames.includes(filename)) {
-                    filename = `image_${imageId}_${counter}.${fileExtension}`;
+                    filename = `image_${imageId}_${counter}`;
                     counter++;
                 }
                 
                 existingFilenames.push(filename);
                 
+                const fullPath = `images/${filename}.${fileExtension}`;
+                
                 const uploadResponse = await uploadToGitHub(
                     githubUsername,
                     repoName,
                     githubToken,
-                    `images/${filename}`,
+                    fullPath,
                     base64Content,
                     `Upload image ${filename}`
                 );
@@ -649,7 +710,8 @@ uploadBtn.addEventListener('click', async () => {
                     const newImage = {
                         id: imageId,
                         filename: filename,
-                        path: uploadResponse.content.download_url
+                        path: uploadResponse.content.download_url,
+                        categories: [...selectedCategories]
                     };
                     currentImages.push(newImage);
                     results.push(newImage);
@@ -754,7 +816,17 @@ async function getCurrentImages(username, repo, token) {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const data = await response.json();
-        return JSON.parse(atob(data.content.replace(/\s/g, ''))).images || [];
+        const content = JSON.parse(atob(data.content.replace(/\s/g, '')));
+        
+        // Kiểm tra cấu trúc dữ liệu cũ (không có categories)
+        if (Array.isArray(content)) {
+            return content.map(img => ({
+                ...img,
+                categories: ['general'] // Thêm categories mặc định cho dữ liệu cũ
+            }));
+        }
+        
+        return content.images || [];
     } catch (error) {
         if (error.message.includes('404')) return [];
         console.error('Error getting current images:', error);
@@ -781,7 +853,11 @@ async function updateImagesJson(username, repo, token, images) {
         }
         
         const sortedImages = [...images].sort((a, b) => a.id - b.id);
-        const newContent = { images: sortedImages };
+        const newContent = { 
+            version: "1.1",
+            last_updated: new Date().toISOString(),
+            images: sortedImages 
+        };
         
         const putResponse = await fetch(
             `https://api.github.com/repos/${username}/${repo}/contents/data/images.json`,
