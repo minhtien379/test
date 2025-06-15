@@ -1,0 +1,42 @@
+{
+  "version": "1.1",
+  "last_updated": "2025-06-15T02:39:48.780Z",
+  "images": [
+    {
+      "id": 1,
+      "filename": "image_1",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_1.jpg",
+      "categories": [
+        "nature",
+        "animals"
+      ]
+    },
+    {
+      "id": 2,
+      "filename": "image_2",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_2.jpg",
+      "categories": [
+        "nature",
+        "animals"
+      ]
+    },
+    {
+      "id": 3,
+      "filename": "image_3",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_3.jpg",
+      "categories": [
+        "nature",
+        "animals"
+      ]
+    },
+    {
+      "id": 4,
+      "filename": "image_4",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_4.jpg",
+      "categories": [
+        "nature",
+        "animals"
+      ]
+    }
+  ]
+}
