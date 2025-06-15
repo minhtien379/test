@@ -853,9 +853,7 @@ async function updateImagesJson(username, repo, token, images) {
         }
         
         const sortedImages = [...images].sort((a, b) => a.id - b.id);
-        const newContent = { 
-            version: "1.1",
-            last_updated: new Date().toISOString(),
+        const newContent = {
             images: sortedImages 
         };
         
