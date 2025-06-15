@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "last_updated": "2025-06-15T02:39:48.780Z",
+  "last_updated": "2025-06-15T02:40:32.742Z",
   "images": [
     {
       "id": 1,
@@ -36,6 +36,14 @@
       "categories": [
         "nature",
         "animals"
+      ]
+    },
+    {
+      "id": 5,
+      "filename": "image_5",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/images/image_5.jpg",
+      "categories": [
+        "nature"
       ]
     }
   ]
