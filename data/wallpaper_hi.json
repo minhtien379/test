@@ -113,6 +113,12 @@
       "filename": "wallpaper_hi_20.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_20.jpg",
       "categories": "hi"
+    },
+    {
+      "id": null,
+      "filename": "wallpaper_hi_NaN.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_NaN.jpg",
+      "categories": "hi"
     }
   ]
 }
