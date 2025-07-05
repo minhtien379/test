@@ -1,6 +1,12 @@
 {
   "images": [
     {
+      "id": null,
+      "filename": "wallpaper_hi_NaN.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_NaN.jpg",
+      "categories": "hi"
+    },
+    {
       "id": 2,
       "filename": "wallpaper_hi_2.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_2.jpg",
@@ -106,18 +112,6 @@
       "id": 19,
       "filename": "wallpaper_hi_19.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_19.jpg",
-      "categories": "hi"
-    },
-    {
-      "id": 20,
-      "filename": "wallpaper_hi_20.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_20.jpg",
-      "categories": "hi"
-    },
-    {
-      "id": null,
-      "filename": "wallpaper_hi_NaN.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_NaN.jpg",
       "categories": "hi"
     }
   ]
