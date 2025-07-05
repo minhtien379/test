@@ -4,7 +4,7 @@
       "id": 1,
       "filename": "wallpaper__1.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper__1.jpg",
-      "categories": "à"
+      "categories": "Ã "
     },
     {
       "id": 1,
@@ -17,6 +17,12 @@
       "filename": "wallpaper_hi_1.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hi_1.jpg",
       "categories": "hi"
+    },
+    {
+      "id": 1,
+      "filename": "wallpaper_sss_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_sss_1.jpg",
+      "categories": "sss"
     },
     {
       "id": 2,
