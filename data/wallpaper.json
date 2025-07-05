@@ -2,6 +2,12 @@
   "images": [
     {
       "id": 1,
+      "filename": "wallpaper__1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper__1.jpg",
+      "categories": "à"
+    },
+    {
+      "id": 1,
       "filename": "wallpaper_hhehe_1.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_hhehe_1.jpg",
       "categories": "hhehe"
