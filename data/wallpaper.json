@@ -1,11 +1,6 @@
 {
   "images": [
     {
-      "filename": "wallpaper_girl_1.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_1.jpg",
-      "categories": "girl"
-    },
-    {
       "filename": "wallpaper_girl_2.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_2.jpg",
       "categories": "girl"
