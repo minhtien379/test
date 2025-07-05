@@ -1,0 +1,34 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "wallpaper_girl_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_1.jpg",
+      "categories": "girl"
+    },
+    {
+      "id": 2,
+      "filename": "wallpaper_girl_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_2.jpg",
+      "categories": "girl"
+    },
+    {
+      "id": 3,
+      "filename": "wallpaper_girl_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_3.jpg",
+      "categories": "girl"
+    },
+    {
+      "id": 4,
+      "filename": "wallpaper_girl_4.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_4.jpg",
+      "categories": "girl"
+    },
+    {
+      "id": 5,
+      "filename": "wallpaper_girl_5.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/wallpaper_girl_5.jpg",
+      "categories": "girl"
+    }
+  ]
+}
