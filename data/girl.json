@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "girl_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/girl_1.jpg",
+      "categories": "girl"
+    }
+  ]
+}
