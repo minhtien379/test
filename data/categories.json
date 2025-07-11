@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "jk",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_jk.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "jkfgj",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_jkfgj.json"
     }
   ]
 }
