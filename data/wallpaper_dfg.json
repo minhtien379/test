@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "wallpaper_dfg_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_dfg_1.jpg",
+      "categories": "dfg"
+    },
+    {
+      "id": 2,
+      "filename": "wallpaper_dfg_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_dfg_2.jpg",
+      "categories": "dfg"
+    },
+    {
+      "id": 3,
+      "filename": "wallpaper_dfg_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_dfg_3.jpg",
+      "categories": "dfg"
+    },
+    {
+      "id": 4,
+      "filename": "wallpaper_dfg_4.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_dfg_4.jpg",
+      "categories": "dfg"
+    }
+  ]
+}
