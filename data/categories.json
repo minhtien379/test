@@ -14,6 +14,11 @@
       "id": 3,
       "categoryname": "dhd",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dhd.json"
+    },
+    {
+      "id": 4,
+      "categoryname": "df",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_df.json"
     }
   ]
 }
