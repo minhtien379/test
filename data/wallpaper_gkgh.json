@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "wallpaper_gkgh_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gkgh/wallpaper_gkgh_1.jpg",
+      "categories": "gkgh"
+    },
+    {
+      "id": 2,
+      "filename": "wallpaper_gkgh_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gkgh/wallpaper_gkgh_2.jpg",
+      "categories": "gkgh"
+    },
+    {
+      "id": 3,
+      "filename": "wallpaper_gkgh_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gkgh/wallpaper_gkgh_3.jpg",
+      "categories": "gkgh"
+    },
+    {
+      "id": 4,
+      "filename": "wallpaper_gkgh_4.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gkgh/wallpaper_gkgh_4.jpg",
+      "categories": "gkgh"
+    }
+  ]
+}
