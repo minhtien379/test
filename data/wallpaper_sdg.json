@@ -1,27 +1,21 @@
 {
   "images": [
     {
-      "id": 1,
-      "filename": "wallpaper_sdg_1.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sdg_1.jpg",
-      "categories": "sdg"
-    },
-    {
       "id": 2,
-      "filename": "wallpaper_sdg_2.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sdg_2.jpg",
+      "filename": "wallpaper_sf_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sf_2.jpg",
       "categories": "sdg"
     },
     {
       "id": 3,
-      "filename": "wallpaper_sdg_3.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sdg_3.jpg",
+      "filename": "wallpaper_sf_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sf_3.jpg",
       "categories": "sdg"
     },
     {
       "id": 4,
-      "filename": "wallpaper_sdg_4.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sdg_4.jpg",
+      "filename": "wallpaper_sf_4.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sdg/wallpaper_sf_4.jpg",
       "categories": "sdg"
     }
   ]
