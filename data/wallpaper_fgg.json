@@ -1,12 +1,6 @@
 {
   "images": [
     {
-      "id": 1,
-      "filename": "wallpaper_fgg_1.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/fgg/wallpaper_fgg_1.jpg",
-      "categories": "fgg"
-    },
-    {
       "id": 2,
       "filename": "wallpaper_fgg_2.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/fgg/wallpaper_fgg_2.jpg",
