@@ -1,12 +1,6 @@
 {
   "images": [
     {
-      "id": 2,
-      "filename": "wallpaper_sf_2.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_sf_2.jpg",
-      "categories": "dfg"
-    },
-    {
       "id": 3,
       "filename": "wallpaper_sf_3.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dfg/wallpaper_sf_3.jpg",
