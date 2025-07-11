@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "sdg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_sdg.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "dhd",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dhd.json"
     }
   ]
 }
