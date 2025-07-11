@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "dsd",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dsd.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "dfg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dfg.json"
     }
   ]
 }
