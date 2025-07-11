@@ -1,0 +1,22 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "wallpaper_gfjf_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gfjf/wallpaper_gfjf_1.jpg",
+      "categories": "gfjf"
+    },
+    {
+      "id": 2,
+      "filename": "wallpaper_gfjf_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gfjf/wallpaper_gfjf_2.jpg",
+      "categories": "gfjf"
+    },
+    {
+      "id": 3,
+      "filename": "wallpaper_gfjf_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/gfjf/wallpaper_gfjf_3.jpg",
+      "categories": "gfjf"
+    }
+  ]
+}
