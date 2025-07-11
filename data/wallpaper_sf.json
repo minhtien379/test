@@ -1,12 +1,6 @@
 {
   "images": [
     {
-      "id": 3,
-      "filename": "wallpaper_sf_3.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sf/wallpaper_sf_3.jpg",
-      "categories": "sf"
-    },
-    {
       "id": 4,
       "filename": "wallpaper_sf_4.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sf/wallpaper_sf_4.jpg",
