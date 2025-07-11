@@ -24,6 +24,11 @@
       "id": 5,
       "categoryname": "dsg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dsg.json"
+    },
+    {
+      "id": 6,
+      "categoryname": "sdg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_sdg.json"
     }
   ]
 }
