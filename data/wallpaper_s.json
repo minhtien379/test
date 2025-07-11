@@ -1,0 +1,22 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "filename": "wallpaper_s_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/s/wallpaper_s_1.jpg",
+      "categories": "s"
+    },
+    {
+      "id": 2,
+      "filename": "wallpaper_s_2.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/s/wallpaper_s_2.jpg",
+      "categories": "s"
+    },
+    {
+      "id": 3,
+      "filename": "wallpaper_s_3.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/s/wallpaper_s_3.jpg",
+      "categories": "s"
+    }
+  ]
+}
