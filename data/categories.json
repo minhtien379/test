@@ -4,6 +4,11 @@
       "id": 1,
       "categoryname": "f",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_f.json"
+    },
+    {
+      "id": 2,
+      "categoryname": "fgg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_fgg.json"
     }
   ]
 }
