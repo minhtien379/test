@@ -1,12 +1,6 @@
 {
   "images": [
     {
-      "id": 1,
-      "filename": "wallpaper_ds_1.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/ds/wallpaper_ds_1.jpg",
-      "categories": "ds"
-    },
-    {
       "id": 2,
       "filename": "wallpaper_ds_2.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/ds/wallpaper_ds_2.jpg",
