@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "fdh",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_fdh.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "dfdh",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dfdh.json"
     }
   ]
 }
