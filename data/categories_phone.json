@@ -4,6 +4,11 @@
       "id": 1,
       "categoryname": "sdg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_sdg.json"
+    },
+    {
+      "id": 2,
+      "categoryname": "heheh",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_heheh.json"
     }
   ]
 }
