@@ -37,12 +37,6 @@
       "category": "dg"
     },
     {
-      "id": 7,
-      "filename": "wallpaper_dg_7.jpg",
-      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dg/wallpaper_dg_7.jpg",
-      "category": "dg"
-    },
-    {
       "id": 8,
       "filename": "wallpaper_dg_8.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dg/wallpaper_dg_8.jpg",
@@ -76,6 +70,12 @@
       "id": 14,
       "filename": "wallpaper_dg_14.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dg/wallpaper_dg_14.jpg",
+      "category": "dg"
+    },
+    {
+      "id": 15,
+      "filename": "wallpaper_dg_15.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/dg/wallpaper_dg_15.jpg",
       "category": "dg"
     },
     {
