@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "hgr",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_hgr.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "sgs",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_sgs.json"
     }
   ]
 }
