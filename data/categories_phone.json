@@ -4,6 +4,11 @@
       "id": 1,
       "categoryname": "sd",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_sd.json"
+    },
+    {
+      "id": 2,
+      "categoryname": "hgr",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_hgr.json"
     }
   ]
 }
