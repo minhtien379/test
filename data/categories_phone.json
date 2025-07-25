@@ -19,6 +19,11 @@
       "id": 4,
       "categoryname": "hi",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_hi.json"
+    },
+    {
+      "id": 5,
+      "categoryname": "dfg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dfg.json"
     }
   ]
 }
