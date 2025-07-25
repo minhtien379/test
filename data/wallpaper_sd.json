@@ -101,6 +101,11 @@
       "filename": "wallpaper_sd_19.jpg",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sd/wallpaper_sd_19.jpg",
       "category": "sd"
+    },
+    {
+      "id": 1,
+      "filename": "wallpaper_sd_1.jpg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/wallpaper/sd/wallpaper_sd_1.jpg"
     }
   ]
 }
