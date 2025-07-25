@@ -39,6 +39,11 @@
       "id": 8,
       "categoryname": "fdhd",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_fdhd.json"
+    },
+    {
+      "id": 9,
+      "categoryname": "dsgg",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/wallpaper_dsgg.json"
     }
   ]
 }
