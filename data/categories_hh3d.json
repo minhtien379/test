@@ -14,6 +14,11 @@
       "id": 3,
       "categoryname": "ghj",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_ghj.json"
+    },
+    {
+      "id": 4,
+      "categoryname": "hi",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_hi.json"
     }
   ]
 }
