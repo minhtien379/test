@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "sdfds",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_sdfds.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "ghj",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_ghj.json"
     }
   ]
 }
