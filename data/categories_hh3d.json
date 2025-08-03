@@ -4,6 +4,11 @@
       "id": 1,
       "categoryname": "phamnhan",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_phamnhan.json"
+    },
+    {
+      "id": 2,
+      "categoryname": "tiennghich",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_tiennghich.json"
     }
   ]
 }
