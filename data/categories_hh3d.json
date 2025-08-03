@@ -9,6 +9,11 @@
       "id": 2,
       "categoryname": "tiennghich",
       "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_tiennghich.json"
+    },
+    {
+      "id": 3,
+      "categoryname": "trutien",
+      "path": "https://raw.githubusercontent.com/minhtien379/test/main/data/hh3d_trutien.json"
     }
   ]
 }
